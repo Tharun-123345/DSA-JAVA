@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+class MyQueue {
+    private ArrayList<String> list;
+    public MyQueue() {
+        list = new ArrayList<>();
+    }
+    public void push(String task) {
+        list.add(task);
+    }
+    public void add(String task) {
+        push(task);
+    }
+    public String pop() {
+        if (empty()) throw new RuntimeException("Queue is empty");
+        return list.remove(0);
+    }
+    public String peek() {
+        if (empty()) throw new RuntimeException("Queue is empty");
+        return list.get(0);
+    }
+    public boolean empty() {
+        return list.isEmpty();
+    }
+    public int size() {
+        return list.size();
+    }
+    public String get(int index) {
+        if (index < 0 || index >= list.size()) throw new IndexOutOfBoundsException("Invalid index");
+        return list.get(index);
+    }
+    public String remove(int index) {
+        if (index < 0 || index >= list.size()) throw new IndexOutOfBoundsException("Invalid index");
+        return list.remove(index);
+    }
+    public void displayAllTasks() {
+        if (empty()) {
+            System.out.println("No tasks in the queue.");
+        } else {
+            System.out.println("Tasks:");
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println((i + 1) + ". " + list.get(i));
+            }
+        }
+    }
+}
+
+public class QueueDaily{
+    public static void main(String[] args) {
+        MyQueue taskQueue = new MyQueue();
+        taskQueue.add("wake up");
+        taskQueue.add("Eating breakfast");
+        taskQueue.add("Go to college");
+        taskQueue.add("Attend classes");
+        taskQueue.add("Taking break in the middle of classes");
+        taskQueue.displayAllTasks();
+        System.out.println("\nNext Task: " + taskQueue.peek());
+        System.out.println("Doing Task: " + taskQueue.pop());
+        System.out.println("\nRemaining Tasks:");
+        taskQueue.displayAllTasks();
+        System.out.println("\nGet Task 2: " + taskQueue.get(1));
+        System.out.println("Removed Task: " + taskQueue.remove(1));
+        System.out.println("\nFinal Task List:");
+        taskQueue.displayAllTasks();
+        System.out.println("\nQueue Empty?: " + taskQueue.empty());
+        System.out.println("Total Tasks Left: " + taskQueue.size());
+    }
+}
