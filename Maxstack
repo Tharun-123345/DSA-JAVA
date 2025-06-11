@@ -1,0 +1,26 @@
+import java.util.Stack;
+class maxStack{
+    private Stack<integer> stack;
+    private Stack<integer> maxStack;
+    public maxStack(){
+        stack=new Stack<>();
+        maxStack=new Stack<>();
+    }
+}
+public void push(int value){
+    stack.push(value);
+    if(maxStack.isEmpty()||value>=maxStack.peek()){
+        maxStack.push(value);
+    }
+}
+public int pop(){
+    if(stack.isEmpty()){
+        throw new RuntimeException("Stack is empty");
+    }
+    int value=stack.pop();
+    if(value==maxStack.peek()){
+        maxStack.pop();
+    }
+    return value;
+}
+
