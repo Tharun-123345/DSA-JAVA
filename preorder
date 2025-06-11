@@ -1,0 +1,33 @@
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class BinaryTreePreorder {
+
+    public void preorderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.val + " "); 
+        preorderTraversal(root.left);     
+        preorderTraversal(root.right);    
+    }
+
+    public static void main(String[] args) {
+        BinaryTreePreorder tree = new BinaryTreePreorder();
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        System.out.println("Preorder traversal of the binary tree is:");z
+        tree.preorderTraversal(root);
+    }
+}
